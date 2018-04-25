@@ -1,12 +1,9 @@
-# semantic_pytorch
-FROM ubuntu:16.04
+FROM continuumio/anaconda3
 MAINTAINER yanfu <zhan0314@gmail.com>
 
 # set up apt-get related tools
 RUN apt-get update 
 RUN apt-get install -y \
-    python3 \
-    python3-pip \
     curl \
     wget \
     vim \
