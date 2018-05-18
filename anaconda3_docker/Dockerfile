@@ -15,6 +15,20 @@ RUN apt-get install -y \
     screen \
     openssh-server
 
+# set up git
+RUN git config --global user.email "zhan0314@gmail.com"
+RUN git config --global user.name "yfzhang"
+RUN git config --global credential.helper cache
+RUN git config --global credential.helper 'cache --timeout=9999'
+
+# set up conda env
+RUN conda update -n base conda
+RUN conda install tqdm
+RUN conda install pytorch-cpu torchvision-cpu -c pytorch
+RUN conda config --add channels conda-forge
+RUN conda install visdom
+RUN pip install git+https://github.com/daavoo/pyntcloud
+
 # setup vim config and zsh config
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \
     bash ~/.vim_runtime/install_awesome_vimrc.sh && \ 
