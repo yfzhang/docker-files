@@ -13,6 +13,8 @@ RUN apt-get install -y \
     cmake \
     htop \
     screen \
+    man \
+    lsof \
     openssh-server
 
 # set up git
@@ -26,7 +28,9 @@ RUN conda update -n base conda
 RUN conda install tqdm
 RUN conda install pytorch-cpu torchvision-cpu -c pytorch
 RUN conda config --add channels conda-forge
-RUN conda install visdom
+#RUN conda install visdom
+RUN conda update pip
+RUN pip install visdom
 RUN pip install git+https://github.com/daavoo/pyntcloud
 
 # setup vim config and zsh config
